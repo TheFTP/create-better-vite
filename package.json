@@ -1,27 +1,14 @@
 {
   "name": "@qvgk/create-vite",
   "private": false,
-  "version": "1.0.6",
+  "version": "1.1.1",
   "type": "module",
-  "bin": "./bin/cli.cjs",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
+  "bin": "./bin/cli.js",
   "dependencies": {
-    "framer-motion": "^6.5.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.0",
-    "vite": "^3.0.0"
+    "chalk": "^5.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/QVGK/qvgk-vite-react.git"
+    "url": "https://github.com/QVGK/create-vite.git"
   }
 }
