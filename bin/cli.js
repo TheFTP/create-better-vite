@@ -22,9 +22,7 @@ if(repoName !== repoName.toLowerCase()) {
     console.error(chalk.red('Repository name must be lowercase.'));
     process.exit();
 }
-if(repoName === '.') {
-    repoName = ''
-}
+
 const gitCheckoutCommand = `git clone --depth 1 https://github.com/QVGK/vite-react ${repoName}`;
 const installDepsCommand = `cd ${repoName} && npm install`;
 
