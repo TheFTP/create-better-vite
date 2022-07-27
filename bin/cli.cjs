@@ -11,6 +11,14 @@ const runCommand = (cmd) => {
 }
 
 const repoName = process.argv[2];
+if(!repoName) {
+    console.error('Please provide a repository name.');
+    process.exit(1);
+}
+if(repoName !== repoName.toLowerCase()) {
+    console.error('Repository name must be lowercase.');
+    process.exit(1);
+}
 const gitCheckoutCommand = `git clone --depth 1 https://github.com/QVGK/qvgk-vite-react ${repoName}`;
 const installDepsCommand = `cd ${repoName} && npm install`;
 
