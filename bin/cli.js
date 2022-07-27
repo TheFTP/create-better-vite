@@ -26,6 +26,10 @@ const validateFramework = (framework) => {
         return true
     }
 
+    if(framework.toLowerCase() === 'preact') {
+        return true
+    }
+
     return false
 }
 
