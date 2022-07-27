@@ -1,11 +1,10 @@
 {
   "name": "@qvgk/create-vite",
   "private": false,
-  "version": "1.1.5",
+  "version": "1.1.6",
   "type": "commonjs",
   "bin": "./bin/cli.cjs",
   "dependencies": {
-    "@qvgk/create-vite": "^1.1.4",
     "chalk": "^5.0.1"
   },
   "repository": {
