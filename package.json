@@ -1,8 +1,9 @@
 {
-  "name": "create-qvgk-v-r",
+  "name": "@qvgk/create-vite",
   "private": false,
   "version": "1.0.0",
   "type": "module",
+  "bin": "./bin/cli.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
