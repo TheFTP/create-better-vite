@@ -45,7 +45,7 @@ if(validateFramework(FrameworkName)) {
 } else {
     log(chalk.red('Please provide a valid framework.'));
     log(chalk.blueBright('React'));
-    log(`${chalk.hex('#bf00ff')('Preact')} ${chalk.redBright('Coming soon!')}`);
+    log(chalk.hex('#bf00ff')('Preact'));
     log(`${chalk.greenBright('Vue')} ${chalk.redBright('Coming soon!')}`);
     log(`${chalk.hex('#FFA500')('Svelte')} ${chalk.redBright('Coming soon!')}`);
     process.exit();
