@@ -12,3 +12,9 @@ npx @QVGK/Create-Vite@latest
 
 QVGK Create-Vite is a Starter Command for NPM that will create a React App using Vite. This is **NOT** the default Vite React Template, this one is edited to make
 the template seem better and smoother.
+
+### Why did I create QVGK Create-Vite?
+
+I wasn't satisfied with the current template... yep! That's it...
+
+I'm planning on adding more templates though, which will come with `React-Helmet` and `React-Router-Dom` automatically installed.
