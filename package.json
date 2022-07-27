@@ -3,7 +3,7 @@
   "private": false,
   "version": "1.0.1",
   "type": "module",
-  "bin": "./bin/cli.js",
+  "bin": "./bin/cli.cjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
