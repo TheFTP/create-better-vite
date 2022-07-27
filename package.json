@@ -1,7 +1,7 @@
 {
   "name": "@qvgk/create-vite",
   "private": false,
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "bin": "./bin/cli.js",
   "dependencies": {
