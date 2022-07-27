@@ -15,7 +15,7 @@ const runCommand = (cmd) => {
 
 let folderName = process.argv[2];
 if(!folderName) {
-    console.error(`${chalk.red('Please provide an installation folder name.')} ${chalk.blueBright('(or use "." to install in the current directory)')}`);
+    console.error(`${chalk.red('Please provide an installation folder name.')} ${chalk.blue('(or use "." to install in the current directory)')}`);
     process.exit();
 }
 if(folderName !== folderName.toLowerCase()) {
@@ -26,7 +26,7 @@ if(folderName !== folderName.toLowerCase()) {
 const gitCheckoutCommand = `git clone --depth 1 https://github.com/QVGK/vite-react ${folderName}`;
 const installDepsCommand = `cd ${folderName} && npm install`;
 
-log(chalk.blueBright(`Cloning Repository into ${folderName}`));
+log(chalk.blueBright(`Downloading files and installing into ${folderName}`));
 const checkedOut = runCommand(gitCheckoutCommand);
 
 if(!checkedOut) {
@@ -43,7 +43,8 @@ if(!depsInstalled) {
 
 log(chalk.blueBright(`Welcome to QVGK's Vite Template for React`));
 log()
-log(chalk.blueBright('This is an edited version of the default Vite template.'));
+log(chalk.blueBright('This is an edited version of the default Vite template that comes Pre-Configured with Routing and more.'));
 log()
 log(chalk.blueBright('To start, run:'));
-log(chalk.green(`cd ${folderName} && npm run dev`));
+log(chalk.green(`cd ${folderName}`));
+log(chalk.green('npm run dev'))
