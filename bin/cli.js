@@ -1,5 +1,6 @@
-const { execSync } = require('child_process');
-const chalk = require('chalk');
+import { execSync } from 'child_process';
+import chalk from 'chalk';
+const log = console.log
 
 const runCommand = (cmd) => {
     try {
@@ -20,24 +21,31 @@ if(repoName !== repoName.toLowerCase()) {
     console.error(chalk.red('Repository name must be lowercase.'));
     process.exit();
 }
+if(repoName === '.') {
+    console.error(chalk.red('You cannot use "." as the repository name.'));
+    process.exit();
+}
 const gitCheckoutCommand = `git clone --depth 1 https://github.com/QVGK/qvgk-vite-react ${repoName}`;
 const installDepsCommand = `cd ${repoName} && npm install`;
 
-console.log(chalk.blue(`Cloning Repository as ${repoName}`));
+log(chalk.blueBright(`Cloning Repository as ${repoName}`));
 const checkedOut = runCommand(gitCheckoutCommand);
 
 if(!checkedOut) {
-    console.log(chalk.red(`Failed to clone repository as ${repoName}`));
+    log(chalk.red(`Failed to clone repository as ${repoName}`));
     process.exit();
 }
 
-console.log(chalk.blue(`Installing Dependencies for ${repoName}`));
+log(chalk.blueBright(`Installing Dependencies for ${repoName}`));
 const depsInstalled = runCommand(installDepsCommand);
 if(!depsInstalled) {
-    console.log(chalk.red(`Failed to install dependencies for ${repoName}`));
+    log(chalk.red(`Failed to install dependencies for ${repoName}`));
     process.exit();
 }
 
-console.log(chalk.blue(`Successfully cloned repository as ${repoName}`));
-console.log(chalk.blue('Please run the following command to start:'))
-console.log(chalk.blue(`cd ${repoName} && npm start`));
+log(chalk.blueBright(`Welcome to QVGK's Vite Template for React`));
+log()
+log(chalk.blueBright('This template makes the default Vite template much more smooth.'));
+log()
+log(chalk.blueBright('To start, run:'));
+log(chalk.green(`cd ${repoName} && npm start`));
