@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { execSync } from 'child_process';
 import chalk from 'chalk';
 const log = console.log
