@@ -18,5 +18,9 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.0",
     "vite": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/QVGK/qvgk-vite-react.git"
   }
 }
