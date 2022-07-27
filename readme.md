@@ -1,4 +1,4 @@
-# QVGK Create-Vite
+# QVGK Create-Vite (NOT READY FOR USE)
 
 ![](https://img.shields.io/npm/v/@qvgk/create-vite?style=flat-square&logo=npm&color=ff0000)
 
