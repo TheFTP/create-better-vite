@@ -13,7 +13,7 @@ const runCommand = (cmd) => {
     return true
 }
 
-const repoName = process.argv[2];
+let repoName = process.argv[2];
 if(!repoName) {
     console.error(chalk.red('Please provide a repository name.'));
     process.exit();
@@ -23,10 +23,9 @@ if(repoName !== repoName.toLowerCase()) {
     process.exit();
 }
 if(repoName === '.') {
-    console.error(chalk.red('You cannot use "." as the repository name.'));
-    process.exit();
+    repoName = ''
 }
-const gitCheckoutCommand = `git clone --depth 1 https://github.com/QVGK/qvgk-vite-react ${repoName}`;
+const gitCheckoutCommand = `git clone --depth 1 https://github.com/QVGK/vite-react ${repoName}`;
 const installDepsCommand = `cd ${repoName} && npm install`;
 
 log(chalk.blueBright(`Cloning Repository as ${repoName}`));
