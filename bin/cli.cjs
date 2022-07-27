@@ -1,5 +1,5 @@
-import { execSync } from 'child_process';
-import chalk from 'chalk';
+const { execSync } = require('child_process');
+const chalk = require('chalk');
 
 const runCommand = (cmd) => {
     try {
