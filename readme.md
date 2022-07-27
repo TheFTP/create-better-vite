@@ -15,6 +15,6 @@ the template seem better and smoother.
 
 ### Why did I create QVGK Create-Vite?
 
-I wasn't satisfied with the current template... yep! That's it...
+I wasn't satisfied with the current template... yep! That's it.
 
-I'm planning on adding more templates though, which will come with `React-Helmet` and `React-Router-Dom` automatically installed.
+I'm planning on adding more templates though, which will come with `React-Helmet` and `React-Router-Dom` already installed and used.
