@@ -4,7 +4,7 @@ assignees: ['QVGK']
 labels: ['Bug']
 title: '[BUG]: '
 body:
-  - type: input
+- type: input
     attributes:
       label: 'What is happening?'
     validations:
