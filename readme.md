@@ -3,7 +3,7 @@
 ![](https://img.shields.io/npm/v/@qvgk/create-vite?style=flat-square&logo=npm&color=ff0000)
 
 ```
-npx @QVGK/Create-Vite@latest
+npx @qvgk/create-vite@latest
 ```
 
 ---
