@@ -1,1 +1,18 @@
+name: '🐛 Bug'
+description: 'QVGK Create-Vite is not working as it should and needs to be fixed.'
+assignees: ['QVGK']
+labels: ['Bug']
+title: '[BUG]: '
+body:
 
+  - type: input
+    attributes:
+      label: 'What is happening?'
+    validations:
+      required: true
+      
+   - type: input
+    attributes:
+      label: 'When did this start to occur?'
+    validations:
+      required: false
