@@ -1,5 +1,5 @@
-<div align="center">
+# QVGK Create-Vite
 
-    # QVGK Create-Vite
-
-</div>
+```
+npx @QVGK/Create-Vite
+```
