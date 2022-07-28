@@ -9,7 +9,7 @@ let FrameworkName = process.argv[2];
 let folderName = process.argv[3];
 let gitCheckoutCommand;
 const log = console.log;
-const installDepsCommand = `cd ${folderName} && npm install`;
+const installDepsCommand = `cd ${folderName} && npm install && npm update`;
 
 // Functions
 const runCommand = (cmd) => {
@@ -56,15 +56,24 @@ if(folderName !== folderName.toLowerCase()) {
 }
 
 // Installation
-log(chalk.blueBright(`Downloading files and installing into ${folderName}`));
+log(chalk.blueBright(`Downloading files for ${FrameworkName.toUpperCase()}...`));
+if(folderName === '.') {
+    log(chalk.blueBright(`Installing files into the current directory...`));
+} else {
+    log(chalk.blueBright(`Installing files into ${folderName}...`));
+}
 const checkedOut = runCommand(gitCheckoutCommand);
 
 if(!checkedOut) {
-    log(chalk.red(`Failed to clone repository into ${folderName}`));
+    if(folderName === '.') {
+        log(chalk.red('Failed to clone repository into the current directory.'));
+    } else {
+        log(chalk.red(`Failed to clone repository into ${folderName}`));
+    }
     process.exit();
 }
 
-log(chalk.blueBright(`Installing Dependencies for ${folderName}`));
+log(chalk.blueBright(`Installing and updating dependencies...`));
 const depsInstalled = runCommand(installDepsCommand);
 if(!depsInstalled) {
     log(chalk.red(`Failed to install dependencies for ${folderName}`));
@@ -77,5 +86,7 @@ log()
 log(chalk.blueBright('This is an edited version of the default Vite template.'));
 log()
 log(chalk.blueBright('To start, run:'));
-log(chalk.green(`$ cd ${folderName}`));
+if(folderName !== '.') {
+    log(chalk.green(`$ cd ${folderName}`));
+}
 log(chalk.green('$ npm run dev'))
