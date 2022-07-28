@@ -1,18 +1,18 @@
-# QVGK Create-Vite
+# QVGK Better Vite
 
-![](https://img.shields.io/npm/v/@qvgk/create-vite?style=flat-square&logo=npm&color=ff0000)
+![](https://img.shields.io/npm/v/create-better-vite?style=flat-square&logo=npm&color=ff0000)
 
 ```
-npx @qvgk/create-vite@latest
+npm create better-vite@latest
 ```
 
 ---
 
-### What is QVGK Create-Vite?
+### What is QVGK Better Vite?
 
-QVGK Create-Vite is an `npx` script that you can run to install an edited version of the default Vite template. This edited template comes with a router pre-installed as well as `React-Helmet` for React-based frameworks.
+QVGK Better Vite is a `NPM` starter script that you can run to install an edited version of the default Vite template. This edited template comes with a router pre-installed as well as `React-Helmet` for React-based frameworks.
 
-### Why did I create QVGK Create-Vite?
+### Why did I create QVGK Better Vite?
 
 I wasn't satisfied with the current template. I wanted to create a new template that could save me some time. Yep! That's it.
 
