@@ -41,7 +41,7 @@ if(!FrameworkName || !folderName) {
     process.exit();
 }
 if(validateFramework(FrameworkName)) {
-    gitCheckoutCommand = `git clone https://github.com/QVGK/vite-${FrameworkName.toLowerCase()} ${folderName}`;
+    gitCheckoutCommand = `git clone --depth=1 https://github.com/QVGK/vite-${FrameworkName.toLowerCase()} ${folderName}`;
 } else {
     log(chalk.red('Please provide a valid framework.'));
     log(chalk.blueBright('React'));
@@ -73,10 +73,10 @@ if(!checkedOut) {
     process.exit();
 }
 
-log(chalk.blueBright(`Installing and updating dependencies...`));
+log(chalk.blueBright(`Installing and updating necessary dependencies...`));
 const depsInstalled = runCommand(installDepsCommand);
 if(!depsInstalled) {
-    log(chalk.red(`Failed to install dependencies for ${folderName}`));
+    log(chalk.red(`Failed to install and update dependencies for ${folderName}`));
     process.exit();
 }
 
