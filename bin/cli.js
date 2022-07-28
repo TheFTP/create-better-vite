@@ -37,11 +37,11 @@ const validateFramework = (framework) => {
 if(!FrameworkName || !folderName) {
     log(chalk.red('Framework name and folder name are required.'));
     log(chalk.red('Example usage:'))
-    log(chalk.green('$ npx @qvgk/create-vite@latest <framework-name> <folder-name>'));
+    log(chalk.green('$ npm create better-vite <framework-name> <folder-name>'));
     process.exit();
 }
 if(validateFramework(FrameworkName)) {
-    gitCheckoutCommand = `git clone --depth=1 https://github.com/QVGK/vite-${FrameworkName.toLowerCase()} ${folderName}`;
+    gitCheckoutCommand = `git clone --depth=1 https://github.com/FixedTemplateProject/vite-${FrameworkName.toLowerCase()} ${folderName}`;
 } else {
     log(chalk.red('Please provide a valid framework.'));
     log(chalk.blueBright('React'));
@@ -81,7 +81,7 @@ if(!depsInstalled) {
 }
 
 // Success
-log(chalk.blueBright(`Welcome to QVGK's Vite Template for ${FrameworkName.toUpperCase()}`));
+log(`${chalk.blueBright(`Welcome to`)} ${chalk.greenBright(`The Fixed Template Project's`)} ${chalk.blueBright(`Vite starter template for ${FrameworkName.toUpperCase()}`)}`);
 log()
 log(chalk.blueBright('This is an edited version of the default Vite template.'));
 log()
