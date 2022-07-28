@@ -18,5 +18,5 @@ We decided to create FTP's Better Vite so that you can save time developing your
 
 ### Information
 
-Click [here](https://github.com/FixedTemplateProject/better-vite/releases) to view the current **announced** releases. <br/>
-Click [here](https://github.com/FixedTemplateProject/better-vite/issues) to view current issues and create an issue.
+Click [here](https://github.com/FixedTemplateProject/create-better-vite/releases) to view the current **announced** releases. <br/>
+Click [here](https://github.com/FixedTemplateProject/create-better-vite/issues) to view current issues and create an issue.
