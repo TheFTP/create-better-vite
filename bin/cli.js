@@ -67,6 +67,7 @@ const checkedOut = runCommand(gitCheckoutCommand);
 if(!checkedOut) {
     if(folderName === '.') {
         log(chalk.red('Failed to clone repository into the current directory.'));
+        log(chalk.red('Failed to clone repository into the current directory. (is there a hidden .git folder?)'));
     } else {
         log(chalk.red(`Failed to clone repository into ${folderName}`));
     }
