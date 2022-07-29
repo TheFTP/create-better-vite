@@ -12,7 +12,7 @@ npm create better-vite@latest
 
 FTP's Better Vite, an NPM starter script, can be used to install a modified version of the standard Vite template. 
 
-This modified template for React-based frameworks and more, comes pre-installed with `React-Helmet` for customising the front end's `<Head>` tag and `React-Router-Dom` for page routing. Did I mention that the template is already configured for routing?
+This modified template for React-based frameworks and more, comes pre-installed with `React-Helmet` for customising the front end's `<Head>` tag and `React-Router-Dom` for page routing. Did I mention that the template is already configured?
 
 ### Why was FTP's Better Vite created?
 
