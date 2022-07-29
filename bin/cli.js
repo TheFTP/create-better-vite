@@ -5,7 +5,6 @@ import { execSync } from 'child_process';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import validator from 'validator';
-import updateNotifier from 'update-notifier';
 import fetch from 'node-fetch';
 
 import packageJson from '../package.json' assert {type: 'json'};
