@@ -1,7 +1,7 @@
 {
   "name": "create-better-vite",
   "private": false,
-  "version": "1.6.2",
+  "version": "1.6.3-rc.0",
   "type": "module",
   "bin": "./bin/cli.js",
   "scripts": {
