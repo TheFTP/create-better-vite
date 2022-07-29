@@ -5,16 +5,23 @@ import { execSync } from 'child_process';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import validator from 'validator';
+import updateNotifier from 'update-notifier';
+import fetch from 'node-fetch';
+
+import packageJson from '../package.json' assert {type: 'json'};
 
 // Variables
 const log = console.log;
 const red = chalk.redBright;
 const blue = chalk.blueBright;
 const green = chalk.greenBright;
+const yellow = chalk.yellowBright;
 
 let folderName;
 let colouredFrameworkName;
 let frameworkName;
+
+let packageVersion = packageJson.version;
 
 // Functions
 const runCommand = (cmd) => {
@@ -26,6 +33,22 @@ const runCommand = (cmd) => {
     }
     return true
 }
+
+// Update Notifier
+await fetch('https://registry.npmjs.org/create-better-vite/latest').then(res => res.json().then(data => {
+    if(data.version !== packageVersion) {
+        log()
+        log(yellow(`A new version of create-better-vite is available.`));
+        log(yellow(`Please update to continue.`))
+        log()
+        log(red(`Current version: ${packageVersion}`));
+        log(blue(`Latest version: ${data.version}`));
+        log()
+        log(green(`$ npm create better-vite@${data.version}`));
+        log()
+        process.exit()
+    }
+}));
 
 // Questions
 await inquirer.prompt({
