@@ -4,6 +4,7 @@
 import { execSync } from 'child_process';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
+import validator from 'validator';
 
 // Variables
 const log = console.log;
@@ -52,8 +53,8 @@ await inquirer.prompt({
     }
 })
 
-if(folderName !== folderName.toLowerCase()) {
-    log(red('Please use only lowercase letters for the folder name.'))
+if(folderName !== folderName.toLowerCase() || !validator.isAlpha(folderName)) {
+    log(red('Please make sure the folder name is lowercase and alpha. (a-z)'))
     process.exit()
 }
 
