@@ -3,13 +3,17 @@
 // Dependencies
 import { execSync } from 'child_process';
 import chalk from 'chalk';
+import inquirer from 'inquirer';
 
 // Variables
-let FrameworkName = process.argv[2];
-let folderName = process.argv[3];
-let gitCheckoutCommand;
 const log = console.log;
-const installDepsCommand = `cd ${folderName} && npm install && npm update`;
+const red = chalk.redBright;
+const blue = chalk.blueBright;
+const green = chalk.greenBright;
+
+let folderName;
+let colouredFrameworkName;
+let frameworkName;
 
 // Functions
 const runCommand = (cmd) => {
@@ -21,72 +25,74 @@ const runCommand = (cmd) => {
     }
     return true
 }
-const validateFramework = (framework) => {
-    if(framework.toLowerCase() === 'react') {
-        return true
+
+// Questions
+await inquirer.prompt({
+    name: 'folderName',
+    type: 'input',
+    message: 'Where do you want to install the project?',
+    default: '.'
+}).then(answer => {
+    folderName = answer.folderName;
+})
+
+await inquirer.prompt({
+    name: 'frameworkName',
+    type: 'list',
+    message: 'What framework do you want to use?',
+    choices: [chalk.hex('#03cafc')('React'), chalk.hex('#c619ff')('Preact')]
+}).then(answer => {
+    colouredFrameworkName = answer.frameworkName;
+    if(answer.frameworkName === chalk.hex('#03cafc')('React')) {
+        frameworkName = 'react';
     }
 
-    if(framework.toLowerCase() === 'preact') {
-        return true
+    if(answer.frameworkName === chalk.hex('#c619ff')('Preact')) {
+        frameworkName = 'preact';
     }
+})
 
-    return false
-}
-
-// Validation
-if(!FrameworkName || !folderName) {
-    log(chalk.red('Framework name and folder name are required.'));
-    log(chalk.red('Example usage:'))
-    log(chalk.green('$ npm create better-vite <framework-name> <folder-name>'));
-    process.exit();
-}
-if(validateFramework(FrameworkName)) {
-    gitCheckoutCommand = `git clone --depth=1 https://github.com/FixedTemplateProject/vite-${FrameworkName.toLowerCase()} ${folderName}`;
-} else {
-    log(chalk.red('Please provide a valid framework.'));
-    log(chalk.blueBright('React'));
-    log(chalk.hex('#bf00ff')('Preact'));
-    log(`${chalk.greenBright('Vue')} ${chalk.redBright('Coming soon!')}`);
-    log(`${chalk.hex('#FFA500')('Svelte')} ${chalk.redBright('Coming soon!')}`);
-    process.exit();
-}
 if(folderName !== folderName.toLowerCase()) {
-    log(chalk.red('Folder name must be lowercase.'));
-    process.exit();
+    log(red('Please use only lowercase letters for the folder name.'))
+    process.exit()
 }
 
 // Installation
-log(chalk.blueBright(`Downloading files for ${FrameworkName.toUpperCase()}...`));
+log()
+log()
 if(folderName === '.') {
-    log(chalk.blueBright(`Installing files into the current directory...`));
+    log(blue(`Downloading files for ${colouredFrameworkName} and installing them into in the current directory...`));
 } else {
-    log(chalk.blueBright(`Installing files into ${folderName}...`));
+    log(blue(`Downloading files for ${colouredFrameworkName} and installing them into ${green(folderName)}...`));
 }
-const checkedOut = runCommand(gitCheckoutCommand);
+
+const checkedOut = runCommand(`git clone --depth=1 https://github.com/FixedTemplateProject/vite-${frameworkName}.git ${folderName}`);
 
 if(!checkedOut) {
     if(folderName === '.') {
-        log(chalk.red('Failed to clone repository into the current directory. (is there a hidden .git folder?)'));
+        log(red('Failed to clone repository into the current directory. (is there a hidden .git folder?)'));
     } else {
-        log(chalk.red(`Failed to clone repository into ${folderName}`));
+        log(red(`Failed to clone repository into ${folderName}`));
     }
     process.exit();
 }
 
-log(chalk.blueBright(`Installing and updating necessary dependencies...`));
-const depsInstalled = runCommand(installDepsCommand);
+log(blue(`Installing and updating necessary dependencies...`));
+const depsInstalled = runCommand(`cd ${folderName} && npm install && npm update`);
 if(!depsInstalled) {
-    log(chalk.red(`Failed to install and update dependencies for ${folderName}`));
+    log(red(`Failed to install and update dependencies for ${folderName}`));
     process.exit();
 }
 
 // Success
-log(`${chalk.blueBright(`Welcome to`)} ${chalk.greenBright(`The Fixed Template Project's`)} ${chalk.blueBright(`Vite starter template for ${FrameworkName.toUpperCase()}`)}`);
 log()
-log(chalk.blueBright('This is an edited version of the default Vite template.'));
 log()
-log(chalk.blueBright('To start, run:'));
+log(`${blue(`Welcome to The`)} ${chalk.bold.underline(`${red(`Fixed`)}${chalk.hex('#0034c4')(` Template `)}${green(`Project's`)}`)} ${blue(`Vite starter template for`)} ${colouredFrameworkName}`);
+log()
+log(blue('This is an edited version of the default Vite template.'));
+log()
+log(blue('To start, run:'));
 if(folderName !== '.') {
-    log(chalk.green(`$ cd ${folderName}`));
+    log(green(`$ cd ${folderName}`));
 }
-log(chalk.green('$ npm run dev'))
+log(green('$ npm run dev'))

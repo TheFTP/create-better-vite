@@ -17,11 +17,7 @@ This modified template for React-based frameworks and more, comes pre-installed 
 ### Why was FTP's Better Vite created?
 
 We believed that the default template for Vite would be insufficient for our needs. The template required some extra functionality, and we also wanted to increase its flexibility.
-That's when we created FTP's Better Vite.
-
-### Why is FTP's Better Vite public?
-
-We opened up the source code for FTP's Better Vite because we think that everyone should be able to view it and potentially learn from it. We also hope that additional people will contribute to the project.
+That's when (and why) we created FTP's Better Vite.
 
 ### Information
 
