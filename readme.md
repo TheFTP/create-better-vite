@@ -46,14 +46,14 @@ This modified template for React-based frameworks currently, comes pre-installed
 
 ### Why was FTP's Better Vite created?
 
-We believed that the default template for Vite was be insufficient for our needs. The template required some extra functionality, and we also wanted to increase its flexibility.
+We believed that the default template for Vite was insufficient for our needs. The template required some extra functionality, and we also wanted to increase its flexibility.
 That's when (and why) we created FTP's Better Vite.
 
 ---
 
 ## Information
 
-Click [here](https://github.com/FixedTemplateProject/create-better-vite/releases) to view the current **announced** releases. <br/>
-Click [here](https://github.com/FixedTemplateProject/create-better-vite/issues) to view current issues and create an issue.
+Click [here](https://github.com/FixedTemplateProject/create-better-vite/releases) to view the **current** releases. <br/>
+Click [here](https://github.com/FixedTemplateProject/create-better-vite/issues) to view the **current** issues or to create an issue.
 
 ---

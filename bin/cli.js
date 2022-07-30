@@ -16,6 +16,7 @@ const blue = chalk.blueBright;
 const green = chalk.greenBright;
 const yellow = chalk.yellowBright;
 
+let sendStats = false
 let folderName;
 let colouredFrameworkName;
 let frameworkName;
@@ -55,6 +56,17 @@ if(packageVersion.includes('dev')) {
 }
 
 // Questions
+await inquirer.prompt({
+    name: 'statsQuestion',
+    type: 'list',
+    message: `Can we send anonymous usage statistics?`,
+    choices: [green('Yes'), red('No')]
+}).then(answer => {
+    if(answer.statsQuestion === green('Yes')) {
+        sendStats = true
+    }
+})
+
 if(process.argv[2]) {
     folderName = process.argv[2];
 } else {
@@ -81,24 +93,43 @@ await inquirer.prompt({
 }).then(answer => {
     colouredFrameworkName = answer.frameworkName;
     if(answer.frameworkName === chalk.hex('#03cafc')('React')) {
-        frameworkName = 'react';
+        frameworkName = 'React';
     }
 
     if(answer.frameworkName === chalk.hex('#c619ff')('Preact')) {
-        frameworkName = 'preact';
+        frameworkName = 'Preact';
     }
 })
 
+if(sendStats) {
+    await fetch('http://localhost:3000', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                framework: frameworkName
+            })
+        }).then(res => {
+            log();
+            log(green(`Sent usage statistics. Thank you for using create-better-vite!`));
+            log();
+        })
+        .catch(err => {
+            log();
+            log(red('Failed to send usage statistics.'));
+            log();
+        })
+}
+
 // Installation
-log()
-log()
 if(folderName === '.') {
     log(blue(`Downloading files for ${colouredFrameworkName} and installing them into in the current directory...`));
 } else {
     log(blue(`Downloading files for ${colouredFrameworkName} and installing them into ${green(folderName)}...`));
 }
 
-const checkedOut = runCommand(`git clone --depth=1 https://github.com/FixedTemplateProject/vite-${frameworkName}.git ${folderName}`);
+const checkedOut = runCommand(`git clone --depth=1 https://github.com/FixedTemplateProject/vite-${frameworkName.toLowerCase()}.git ${folderName}`);
 
 if(!checkedOut) {
     if(folderName === '.') {
