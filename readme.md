@@ -1,6 +1,6 @@
 # The Fixed Template Project's Better Vite
 
-![](https://img.shields.io/npm/v/create-better-vite?style=flat-square&logo=npm&color=ff0000) ![](https://img.shields.io/npm/v/create-better-vite/dev?style=flat-square&logo=npm&color=f7ff00)
+![](https://img.shields.io/npm/v/create-better-vite?style=flat-square&logo=npm&color=ff0000) ![](https://img.shields.io/npm/v/create-better-vite/dev?style=flat-square&logo=npm&color=brightgreen)
 
 ---
 
