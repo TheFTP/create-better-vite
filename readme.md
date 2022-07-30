@@ -6,6 +6,10 @@
 npm create better-vite@latest
 ```
 
+```
+npm create better-vite@2.0.0-dev3
+```
+
 ---
 
 ### What is FTP's Better Vite?

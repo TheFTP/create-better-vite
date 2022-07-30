@@ -35,7 +35,7 @@ const runCommand = (cmd) => {
 
 // Update Notifier
 await fetch('https://registry.npmjs.org/create-better-vite/latest').then(res => res.json().then(data => {
-    if(data.version !== packageVersion) {
+    if(data.version !== packageVersion && !packageVersion.includes('dev')) {
         log()
         log(yellow(`A new version of create-better-vite is available.`));
         log(yellow(`Please update to continue.`))
@@ -49,6 +49,13 @@ await fetch('https://registry.npmjs.org/create-better-vite/latest').then(res => 
     }
 }));
 
+// Dev Version Notifier
+if(packageVersion.includes('dev')) {
+    log()
+    log(yellow(`Warning: You are using a development version of create-better-vite.`));
+    log()
+}
+
 // Questions
 await inquirer.prompt({
     name: 'folderName',
@@ -58,6 +65,11 @@ await inquirer.prompt({
 }).then(answer => {
     folderName = answer.folderName;
 })
+
+if(folderName !== folderName.toLowerCase() || !validator.isAlpha(folderName)) {
+    log(red('Please make sure the folder name is lowercase and alpha. (a-z)'))
+    process.exit()
+}
 
 await inquirer.prompt({
     name: 'frameworkName',
@@ -74,11 +86,6 @@ await inquirer.prompt({
         frameworkName = 'preact';
     }
 })
-
-if(folderName !== folderName.toLowerCase() || !validator.isAlpha(folderName)) {
-    log(red('Please make sure the folder name is lowercase and alpha. (a-z)'))
-    process.exit()
-}
 
 // Installation
 log()
