@@ -38,14 +38,12 @@ await fetch('https://registry.npmjs.org/create-better-vite/latest').then(res => 
     if(data.version !== packageVersion && !packageVersion.includes('dev')) {
         log()
         log(yellow(`A new version of create-better-vite is available.`));
-        log(yellow(`Please update to continue.`))
         log()
         log(red(`Current version: ${packageVersion}`));
-        log(blue(`Latest version: ${data.version}`));
+        log(chalk.hex('#03cafc')(`Latest version: ${data.version}`));
         log()
         log(green(`$ npm create better-vite@${data.version}`));
         log()
-        process.exit()
     }
 }));
 
@@ -57,14 +55,18 @@ if(packageVersion.includes('dev')) {
 }
 
 // Questions
-await inquirer.prompt({
-    name: 'folderName',
-    type: 'input',
-    message: 'Where do you want to install the project?',
-    default: '.'
-}).then(answer => {
-    folderName = answer.folderName;
-})
+if(process.argv[2]) {
+    folderName = process.argv[2];
+} else {
+    await inquirer.prompt({
+        name: 'folderName',
+        type: 'input',
+        message: 'Where do you want to install the project?',
+        default: '.'
+    }).then(answer => {
+        folderName = answer.folderName;
+    })
+}
 
 if(folderName !== folderName.toLowerCase() || !validator.isAlpha(folderName)) {
     log(red('Please make sure the folder name is lowercase and alpha. (a-z)'))
