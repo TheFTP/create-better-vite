@@ -102,7 +102,7 @@ await inquirer.prompt({
 })
 
 if(sendStats) {
-    await fetch('http://localhost:3000', {
+    await fetch('https://stats.better-vite.qvgk.net', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
