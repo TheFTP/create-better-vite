@@ -24,7 +24,7 @@ import fs from 'fs';
 
 // Variables
 const log = console.log;
-const packageVersion = '2.0.0-dev12';
+const packageVersion = '2.0.1';
 
 const red = chalk.redBright;
 const noRed = chalk.hex('#ff0000')
