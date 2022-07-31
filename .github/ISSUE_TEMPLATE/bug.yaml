@@ -26,7 +26,7 @@ body:
   - type: dropdown
     id: 'when'
     attributes:
-      label: 'When did this bug start to occur?'
+      label: 'When did this bug start to occur? (Rough Estimate)'
       options:
         - I Don't Know
         - Today
