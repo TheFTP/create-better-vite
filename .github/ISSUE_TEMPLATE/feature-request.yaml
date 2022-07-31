@@ -10,9 +10,9 @@ body:
       label: 'What is this related to?'
       options:
         - Installer
-        - React
-        - Preact
-        - Other
+        - React Template
+        - Preact Template
+        - Something Else
     validations:
       required: true
 
