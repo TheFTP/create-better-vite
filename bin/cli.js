@@ -104,8 +104,8 @@ if(process.argv[2]) {
     })
 }
 
-if(folderName !== folderName.toLowerCase() || !validator.isAlpha(folderName)) {
-    log(red('Please make sure the folder name is lowercase and alpha. (a-z)'))
+if(!validator.isAlpha(folderName) && folderName !== '.') {
+    log(red('Please make sure the folder name is alpha. (a-z, A-Z)'))
     process.exit()
 }
 
@@ -161,6 +161,22 @@ if(!checkedOut) {
         log(red(`Failed to clone repository into ${folderName}`));
     }
     process.exit();
+}
+
+log(blue(`Changing package.json name to ${green(folderName)}...`));
+if(folderName !== '.') {
+    try {
+        let templatePackageJson = JSON.parse(fs.readFileSync(`./${folderName}/package.json`, 'utf8'));
+        log('Getting package.json data...')
+        templatePackageJson.name = folderName;
+        log('Changed name value.')
+        fs.writeFileSync(`./${folderName}/package.json`, JSON.stringify(templatePackageJson, null, 2));
+        log('Successfully wrote package.json.')
+    } catch(err) {
+        log(red('Failed to change package.json name.'));
+    }
+} else {
+    log('Skipping package.json name change due to current directory.')
 }
 
 log(blue(`Installing and updating necessary dependencies...`));
