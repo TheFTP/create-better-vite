@@ -16,7 +16,7 @@ body:
     validations:
       required: true
 
-  - type: input
+  - type: textarea
     id: 'what'
     attributes:
       label: 'What would you like to see implemented?'

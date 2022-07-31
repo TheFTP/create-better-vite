@@ -4,16 +4,33 @@ assignees: ['QVGK']
 labels: ['Bug']
 title: '[BUG]: '
 body:
-  - type: input
+  - type: dropdown
+    id: 'related'
+    attributes:
+      label: 'What is this bug related to?'
+      options:
+        - Installer
+        - React Template
+        - Preact Template
+        - Something Else
+    validations:
+      required: true
+
+  - type: textarea
     id: 'what'
     attributes:
       label: 'What is happening?'
     validations:
       required: true
 
-  - type: input
+  - type: dropdown
     id: 'when'
     attributes:
-      label: 'When did this start happening?'
+      label: 'When did this bug start to occur?'
+      options:
+        - I Don't Know
+        - Today
+        - Yesterday
+        - Sometime This Week
     validations:
-      required: false
+      required: true
