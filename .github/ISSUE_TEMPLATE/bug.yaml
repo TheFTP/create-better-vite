@@ -24,6 +24,16 @@ body:
       required: true
 
   - type: dropdown
+    id: 'version'
+    attributes:
+      label: 'What version does this bug occur on?'
+      options:
+        - V2.0.0-dev
+        - V1.6.2
+    validations:
+      required: true
+
+  - type: dropdown
     id: 'when'
     attributes:
       label: 'When did this bug start to occur? (Rough Estimate)'
