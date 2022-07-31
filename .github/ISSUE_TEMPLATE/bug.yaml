@@ -32,6 +32,7 @@ body:
         - V2.0.0-dev (Installer)
         - V1.6.2 (Installer)
         - V0.0.2 (Template)
+        - My Version Isn't Listed Here
     validations:
       required: true
 
