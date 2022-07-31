@@ -24,8 +24,7 @@ import fs from 'fs';
 
 // Variables
 const log = console.log;
-const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-const packageVersion = packageJson.version;
+const packageVersion = process.env.npm_package_version;
 
 const red = chalk.redBright;
 const noRed = chalk.hex('#ff0000')
