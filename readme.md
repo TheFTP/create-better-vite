@@ -1,4 +1,4 @@
-# The Fixed Template Project's Better Vite
+# FTP's Better Vite (2.0.0!)
 
 ![](https://img.shields.io/github/license/FixedTemplateProject/create-better-vite?style=flat-square) ![](https://img.shields.io/npm/dt/create-better-vite?style=flat-square&color=green) ![](https://img.shields.io/github/issues/FixedTemplateProject/create-better-vite?style=flat-square&color=green)
 
