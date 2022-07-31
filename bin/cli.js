@@ -165,15 +165,19 @@ if(!checkedOut) {
 
 log(blue(`Changing package.json name to ${green(folderName)}...`));
 if(folderName !== '.') {
-    try {
-        let templatePackageJson = JSON.parse(fs.readFileSync(`./${folderName}/package.json`, 'utf8'));
-        log('Getting package.json data...')
-        templatePackageJson.name = folderName;
-        log('Changed name value.')
-        fs.writeFileSync(`./${folderName}/package.json`, JSON.stringify(templatePackageJson, null, 2));
-        log('Successfully wrote package.json.')
-    } catch(err) {
-        log(red('Failed to change package.json name.'));
+    if(folderName === folderName.toLowerCase()) {
+        try {
+            let templatePackageJson = JSON.parse(fs.readFileSync(`./${folderName}/package.json`, 'utf8'));
+            log('Getting package.json data...')
+            templatePackageJson.name = folderName;
+            log('Changed name value.')
+            fs.writeFileSync(`./${folderName}/package.json`, JSON.stringify(templatePackageJson, null, 2));
+            log('Successfully wrote package.json.')
+        } catch(err) {
+            log(red('Failed to change package.json name.'));
+        }
+    } else {
+        log('Skipping package.json name change due to name having capitals.')
     }
 } else {
     log('Skipping package.json name change due to current directory.')
