@@ -1,27 +1,52 @@
 #!/usr/bin/env node
 
+/*
+Copyright (c) 2022 The Fixed Template Project
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
 // Dependencies
 import { execSync } from 'child_process';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import validator from 'validator';
 import fetch from 'node-fetch';
-
-import packageJson from '../package.json' assert {type: 'json'};
+import fs from 'fs';
 
 // Variables
 const log = console.log;
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+const packageVersion = packageJson.version;
+
 const red = chalk.redBright;
-const blue = chalk.blueBright;
+const noRed = chalk.hex('#ff0000')
+
+const blue = chalk.blue
+const skyBlue = chalk.hex('#87CEEB')
+const lightBlurple = chalk.hex('#7289da')
+const reactBlue = chalk.hex('#00D8FF');
+
 const green = chalk.greenBright;
+const yesGreen = chalk.hex('#00FF00');
+
 const yellow = chalk.yellowBright;
+
+const purple = chalk.hex('#800080');
+const preactPurple = chalk.hex('#9D00FF');
 
 let sendStats = false
 let folderName;
 let colouredFrameworkName;
 let frameworkName;
-
-let packageVersion = packageJson.version;
 
 // Functions
 const runCommand = (cmd) => {
@@ -50,7 +75,6 @@ await fetch('https://registry.npmjs.org/create-better-vite/latest').then(res => 
 
 // Dev Version Notifier
 if(packageVersion.includes('dev')) {
-    log()
     log(yellow(`Warning: You are using a development version of create-better-vite.`));
     log()
 }
@@ -60,9 +84,9 @@ await inquirer.prompt({
     name: 'statsQuestion',
     type: 'list',
     message: `Can we send anonymous usage statistics?`,
-    choices: [green('Yes'), red('No')]
+    choices: [yesGreen('Yes'), noRed('No')]
 }).then(answer => {
-    if(answer.statsQuestion === green('Yes')) {
+    if(answer.statsQuestion === yesGreen('Yes')) {
         sendStats = true
     }
 })
@@ -89,14 +113,14 @@ await inquirer.prompt({
     name: 'frameworkName',
     type: 'list',
     message: 'What framework do you want to use?',
-    choices: [chalk.hex('#03cafc')('React'), chalk.hex('#c619ff')('Preact')]
+    choices: [reactBlue('React'), preactPurple('Preact')]
 }).then(answer => {
     colouredFrameworkName = answer.frameworkName;
-    if(answer.frameworkName === chalk.hex('#03cafc')('React')) {
+    if(answer.frameworkName === reactBlue('React')) {
         frameworkName = 'React';
     }
 
-    if(answer.frameworkName === chalk.hex('#c619ff')('Preact')) {
+    if(answer.frameworkName === preactPurple('Preact')) {
         frameworkName = 'Preact';
     }
 })
@@ -113,16 +137,15 @@ if(sendStats) {
         }).then(res => {
             log();
             log(green(`Sent usage statistics. Thank you for using create-better-vite!`));
-            log();
         })
         .catch(err => {
             log();
             log(red('Failed to send usage statistics.'));
-            log();
         })
 }
 
 // Installation
+log()
 if(folderName === '.') {
     log(blue(`Downloading files for ${colouredFrameworkName} and installing them into in the current directory...`));
 } else {
@@ -150,12 +173,16 @@ if(!depsInstalled) {
 // Success
 log()
 log()
-log(`${blue(`Welcome to The`)} ${chalk.bold.underline(`${red(`Fixed`)}${chalk.hex('#0034c4')(` Template `)}${green(`Project's`)}`)} ${blue(`Vite starter template for`)} ${colouredFrameworkName}`);
-log()
-log(blue('This is an edited version of the default Vite template.'));
-log()
-log(blue('To start, run:'));
+log(`Welcome to ${chalk.bold.underline(`${noRed(`F`)}${lightBlurple(`T`)}${yesGreen(`P`)}`)}'s Vite starter template for ${colouredFrameworkName}`);
 if(folderName !== '.') {
-    log(green(`$ cd ${folderName}`));
+    log()
+    log(skyBlue(`Open ${colouredFrameworkName} folder:`));
+    log(green(` $ cd ${folderName}`));
 }
-log(green('$ npm run dev'))
+log()
+log(skyBlue('Run development server:'));
+log(green(' $ npm run dev'))
+log()
+log(skyBlue('Build for production:'));
+log(green(' $ npm run build'))
+log()
