@@ -1,5 +1,7 @@
 # Security Policy
 
+![](https://img.shields.io/npm/v/create-better-vite?style=flat-square&logo=npm&color=ff0000) ![](https://img.shields.io/npm/v/create-better-vite/dev?style=flat-square&logo=npm&color=brightgreen)
+
 ---
 
 ## Supported Versions
