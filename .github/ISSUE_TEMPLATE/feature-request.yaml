@@ -1,0 +1,24 @@
+name: '🗒️ Feature Request'
+description: 'You would like to request a new feature to be implemented into Create-Better-Vite.'
+assignees: ['QVGK']
+labels: ['Feature Request']
+title: '[FEATURE]: '
+body:
+  - type: dropdown
+    id: 'related'
+    attributes:
+      label: 'What is this related to?'
+      options:
+        - Installer
+        - React
+        - Preact
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: 'what'
+    attributes:
+      label: 'What would you like to see implemented?'
+    validations:
+      required: true
